@@ -9,18 +9,22 @@ def create_random_number(NUM_DIGITS: int) -> int:
     return "".join([num for num in random.sample(numbers, NUM_DIGITS)])
 
 
-def check_guess_number(random_number: str, guessed_number: str) -> str:
+def check_guess_number(random_number: str, guessed_number: str):
 
     if random_number == guessed_number:
         return "You got it!"
 
-    for rand, guess in zip(random_number, guessed_number):
-        if rand == guess:
-            return "Fermi"
+    clues = []
 
-    for guess in guessed_number:
-        if guess in random_number:
-            return "Pico"
+    for i in range(len(guessed_number)):
+        if random_number[i] == guessed_number[i]:
+            clues.append("Fermi")
+
+        elif guessed_number[i] in random_number:
+            clues.append("Pico")
+
+    if len(clues) > 0:
+        return sorted(clues)
 
     return "Bagels"
 
