@@ -2,9 +2,11 @@ import random
 import time
 
 
-def create_random_number() -> int:
+def create_random_number(NUM_DIGITS: int) -> int:
     random.seed(sum(time.gmtime()))
-    return str(random.randint(100, 999))
+    numbers = list("0123456789")
+    random.shuffle(numbers)
+    return "".join([num for num in random.sample(numbers, NUM_DIGITS)])
 
 
 def check_guess_number(random_number: str, guessed_number: str) -> str:
@@ -25,6 +27,8 @@ def check_guess_number(random_number: str, guessed_number: str) -> str:
 
 if __name__ == "__main__":
 
+    NUM_DIGITS = 3
+
     while True:
 
         print(
@@ -36,26 +40,24 @@ if __name__ == "__main__":
         Bagels              No digit is correct"""
         )
 
-        random_number = create_random_number()
-        print(random_number)
+        random_number = create_random_number(NUM_DIGITS)
         print("\nI have thought up a number")
         print("You have 10 guesses to get it.")
 
         for i in range(10):
             print(f"Guess #{i+1}")
-            while True:
-                guessed_number = input()
-                if not guessed_number.isdigit():
-                    print("Input is not number")
-                elif len(guessed_number) != 3:
-                    print("Entered number has more than or less than 3 digits")
-                else:
-                    break
+            guessed_number = ""
+            while len(guessed_number) != 3 or not guessed_number.isdigit():
+                guessed_number = input("> ")
 
             result = check_guess_number(random_number, guessed_number)
             print(result)
             if result == "You got it!":
                 break
+
+            elif i == 9:
+                print("You ran out of guesses")
+                print(f"The answer was {random_number}")
 
         response = input("Do you want to play again? (yes or no)\n")
 
