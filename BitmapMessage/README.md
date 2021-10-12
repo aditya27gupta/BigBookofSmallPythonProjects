@@ -2,7 +2,7 @@ This program uses a multiline string as a bitmap, a 2D image with only two possi
 In this bitmap, space characters represent an empty space, and all other characters are replaced by characters in the user’s message.
 
 Example:
-
+```
 hellohellohellohellohellohellohellohellohellohellohellohellohellohel
    lohellohellohe   h  loh ll  e      lohellohellohellohellohellohel
   llohellohellohellohel oh ll h  l hellohellohellohellohellohello e
@@ -24,3 +24,4 @@ hellohellohellohellohellohellohellohellohellohellohellohellohellohel
                     hel                                       l    l
                     he     l                    l
 hellohellohellohellohellohellohellohellohellohellohellohellohellohel
+```
