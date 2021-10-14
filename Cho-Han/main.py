@@ -14,10 +14,16 @@ def main():
     while money > 0:
         print(f"You have {money} mon. How much do you bet? (or QUIT)")
         bet = ""
-        while not bet.isdigit():
+        while True:
             bet = input("< ").upper()
             if bet == "QUIT":
                 exit()
+            elif not bet.isdigit():
+                print("Please enter numerical value")
+            elif not int(bet) <= money:
+                print(f"Maximum amount you can bet is {money}")
+            else:
+                break
 
         print(
             """The dealer swirls the cup and you hear the rattle of dice.
@@ -45,7 +51,7 @@ def main():
         ):
             print(f"You won! You take {int(bet)*2} mon.")
             money += int(bet) * 2
-            print(f"The house collects a {int(bet)//2} mon fee.")
+            print(f"The house collects a {int(bet)//10} mon fee.")
             money -= int(bet) // 2
 
         else:
