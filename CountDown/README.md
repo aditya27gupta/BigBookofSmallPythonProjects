@@ -1,0 +1,2 @@
+This program displays a digital timer that counts down to zero. Rather than render numeric characters directly, seven segment digits are generated for each digit. Then, set the countdown timer to any number of seconds, minutes, and hours you like.
+However, the Countdown program needs to display a colon made out of asterisks in between the hours, minutes, and seconds.
